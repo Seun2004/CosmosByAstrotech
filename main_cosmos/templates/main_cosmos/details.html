@@ -1,0 +1,97 @@
+{% extends "main_cosmos/base.html" %}
+
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+  <br>
+  <div class="card" id="detailback">
+      <div class="card-body">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{ show.image }}" alt="{{ show.name }}" class="img-fluid">
+      </div>
+        <br>
+        <div class="text">
+            
+            <h9  style="color: #BCE5F5">
+                   <li>Sun — 10</li>
+                               <li>Mercury — 9</li>
+<li>Venus — 8</li>
+<li>Earth — 7</li>
+<li>Mars — 6</li>
+<li>Jupiter — 5</li>
+<li>Saturn — 4</li>
+                               <li>Uranus — 3</li>
+<li>Neptune — 2</li>
+<li>Pluto — 1</li>
+           
+           </h9>
+      </div>
+        
+      <div class="col-md-10" style="color: #C2E9F1">
+         <h3 class="text-center">
+             {{ show.name }}
+          </h3>
+        <p>{{ show.description }}</p>
+          <h5>Planet: {{ show.avgPlanet }}</h5>
+          
+          {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+          <a href="{% url 'main_cosmos:edit_show' show.id %}" class="btn btn-warning">Edit Show</a>
+          <a href="{% url 'main_cosmos:del_show' show.id %}" class="btn btn-danger">Delete Show</a>
+              {% endif %}
+          {% endif %}
+      </div>
+    </div>
+  </div>
+  </div>
+    
+    
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="text-center">Reviews</h3>
+            <form action="{% url 'main_cosmos:rate_show' show.id %}" method="POST">
+              {% csrf_token %}
+              <label for= "comment">Review</label>
+              <textarea name="comment" id="comment" cols="30" rows="7" class="form-control"></textarea>
+
+
+              <label for= "planet">Planet</label>
+              <input type="text" name="planet" class="form-control">
+
+              <br>
+              <input type="submit" class="btn btn-secondary" value="Rate Show">
+             </form>
+  </div>
+</div>
+    
+<div class="card">
+    <div class="card=body">
+      {% for rating in ratings %}
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3" style="color: #D0C05A">
+              <h5 class="text-left">{{ rating.user.username }}</h5>
+              <h6 style="color: #B32A75"> {{ rating.planet }} </h6>
+            </div>
+            <div class="col-md-9">
+              <p style="color: black"> {{ rating.comment }} </p>
+            </div>
+        </div>
+      </div>
+
+        {% endfor %}
+    </div>
+    </div>    
+  </div>
+
+
+
+{% endblock %}

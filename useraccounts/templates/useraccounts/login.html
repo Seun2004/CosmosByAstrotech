@@ -1,0 +1,24 @@
+{% extends 'main_cosmos/base.html' %}
+
+{% block content %} 
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-center">Log In</h3>
+      <form action="" method="POST">
+        {% csrf_token %} 
+        <label for="username">Username</label>
+        <input type="text" placeholder="Type username" class="form-control" name="username">
+        
+        <label for="password">Password</label>
+        <input type="password" placeholder="Type password" class="form-control" name="password">
+        <br>      
+        <input type="submit" value="Login" class="btn btn-danger">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

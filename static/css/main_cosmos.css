@@ -1,0 +1,27 @@
+p { font-family: Baskerville; }
+
+body{
+    background-image: url("mainbackimage/ghg.jpg");
+    background-size: contain;
+    font-family: Baskerville;
+    /*background-color: #6087b1;*/
+}
+          
+#backdrop{
+    background-image: url("mainbackimage/ghg.jpg");
+    background-size: contain;
+    font-family: Baskerville;
+}
+
+#cardback{
+    background-image: url("mainbackimage/ghg.jpg");
+    background-size: contain;
+    font-family: Baskerville;
+        /*background-color: #835519ab;*/
+}
+
+#detailback{
+    background-image: url("mainbackimage/ttt.jpg");
+    background-size: cover;
+    font-family: Baskerville;
+        /*background-color: #835519ab;*/
